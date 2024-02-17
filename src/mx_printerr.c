@@ -1,4 +1,4 @@
-#include "../inc/minilibmx.h"
+#include "../inc/header.h"
 
 void printerr(const char *s){
     write(2, s, mx_strlen(s));

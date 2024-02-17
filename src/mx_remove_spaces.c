@@ -1,5 +1,4 @@
-#include <stdlib.h>
-int mx_strlen(const char *s);
+#include "../inc/header.h"
 
 char *mx_remove_spaces(const char *str) {
     char *result = malloc(mx_strlen(str) + 1);
@@ -12,4 +11,3 @@ char *mx_remove_spaces(const char *str) {
     result[j] = '\0';
     return result;
 }
-
