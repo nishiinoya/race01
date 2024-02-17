@@ -1,14 +1,14 @@
 #include "../inc/header.h"
 
-int error_handling(int argc, char *argv[]) {
-    if (argc < 5) {
+void error_handling(int argc, char *argv[]) {
+    if (argc != 5) {
         mx_printerr("usage: ./part_of_the_matrix [operand] [operation] [operand2] [result]\n");
         exit(-1);
     }
     char *operation = mx_remove_spaces(argv[2]);
 	if (mx_strlen(operation) != 1){
 		mx_printerr("Invalid operator: ");
-		mx_rinterr(operation);
+		mx_printerr(operation);
 		mx_printerr("\n");
 		exit(-1);
 	}
@@ -42,6 +42,4 @@ int error_handling(int argc, char *argv[]) {
     if(mx_atoi(operand2) == 0 && *operation == '/'){
 		exit(-1);
 	}
-
-    return 1;
 }

@@ -1,4 +1,4 @@
-void mx_printchar(char c);
+#include "../inc/header.h"
 
 void mx_printint(int n) {
     if (n == 0) {

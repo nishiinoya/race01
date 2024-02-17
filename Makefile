@@ -1,17 +1,24 @@
-TARGET = part_of_the_matrix
-SRC_DIR = src
-INC_DIR = inc
-CC = clang
-CFLAGS = -std=c11 -Wall -Wextra -Werror -Wpedantic
+CC := clang
+CFLAGS := -std=c11 -Wall -Wextra -Werror -Wpedantic
 
-all: $(TARGET)
+PROJECT := DECRYPT_MATH_EXPR
+EXECUTABLE := part_of_the_matrix
 
-$(TARGET): $(SRC_DIR)/*.c $(INC_DIR)/*.h
-	$(CC) $(CFLAGS) -I$(INC_DIR) -o $(TARGET) $(SRC_DIR)/*.c
+.PHONY: all clean uninstall reinstall
+
+all: $(PROJECT)
+
+$(PROJECT):
+	mkdir -p ./obj
+	$(CC) $(CFLAGS) -c ./src/*.c
+	mv ./*.o ./obj
+	$(CC) $(CFLAGS) -o $(EXECUTABLE) ./obj/*.o
+
+uninstall:
+	rm -rf ./obj
+	rm -rf $(EXECUTABLE)
 
 clean:
-	rm -f $(TARGET)
+	rm -rf ./obj
 
-uninstall: clean
-
-reinstall: uninstall all
+reinstall: uninstall $(PROJECT)
